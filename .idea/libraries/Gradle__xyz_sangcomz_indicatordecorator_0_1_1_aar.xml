@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: xyz.sangcomz:indicatordecorator:0.1.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f88bc530f74a004b110267565e60907a/indicatordecorator-0.1.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f88bc530f74a004b110267565e60907a/indicatordecorator-0.1.1/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/xyz.sangcomz/indicatordecorator/0.1.1/67c062c6d508ecaf19657a69104c5f2499ad0e71/indicatordecorator-0.1.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/xyz.sangcomz/indicatordecorator/0.1.1/137b8416d098c0f1b5d950f4e1d26cea44fe1783/indicatordecorator-0.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

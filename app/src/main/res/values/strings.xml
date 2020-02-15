@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Payment</string>
+    <string name="zero">0</string>
+    <string name="prefix">R$</string>
+    <string name="total">Total a pagar</string>
+    <string name="payment_success">PAGAMENTO REALIZADO COM SUCESSO</string>
+    <string name="eyemobile_tecnologia_ltda">Eyemobile Tecnologia LTDA</string>
+    <string name="address">Av.jorge acerda 2967, Costeira do pirajubaé Florianópolis - SC</string>
+    <string name="confirm">Confirmar</string>
+</resources>
