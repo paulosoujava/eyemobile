@@ -56,10 +56,12 @@ public class Presenter implements Contract.Ctrl {
     }
 
     public void updateUI(TextView vs_1, boolean isBack) {
+
         String str = "";
 
         if( isBack ) {
-            vs_1.setText("00:00");
+            vs_1.setText("00,00");
+            values.clear();
             total = "";
             return;
         }
