@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.paulo.payment.util.MyKeys;
+import com.paulo.payment.util.Utils;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -33,11 +36,11 @@ public class PaymentActivity extends AppCompatActivity {
         if (it != null) {
 
             Bundle bundle = it.getExtras();
-            String total = bundle.getString("Payment_value");
-            String typePayment = bundle.getString("Payment_type");
+            String total = bundle.getString(MyKeys.PAY_VALUE);
+            String typePayment = bundle.getString(MyKeys.PAY_TYPE);
 
             iniIds();
-            value.setText(total);
+            value.setText("R$: "+total);
             type.setText(typePayment);
 
             date.setText(getDate());
@@ -49,11 +52,11 @@ public class PaymentActivity extends AppCompatActivity {
 
     void iniIds() {
 
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/din_condensed_bold.ttf");
+        Typeface font = Utils.getFontCondesendBold(this);
         title = findViewById(R.id.title);
         title.setTypeface(font);
 
-        Typeface fontRec = Typeface.createFromAsset(getAssets(), "fonts/tahoma.ttf");
+        Typeface fontRec = Utils.getFontTahoma(this);
         value = findViewById(R.id.value);
         value.setTypeface(fontRec);
         addrres = findViewById(R.id.address);
@@ -66,7 +69,7 @@ public class PaymentActivity extends AppCompatActivity {
         place.setTypeface(fontRec);
 
         confirm = findViewById(R.id.confirm);
-        Typeface fontBtn = Typeface.createFromAsset(getAssets(), "fonts/tahoma_bold.ttf");
+        Typeface fontBtn = Utils.getFontTahomaBold(this);
         confirm.setTypeface(fontBtn);
 
         back = findViewById(R.id.back);

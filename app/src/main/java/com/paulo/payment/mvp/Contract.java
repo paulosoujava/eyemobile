@@ -1,5 +1,7 @@
 package com.paulo.payment.mvp;
 
+import android.content.Context;
+
 public interface Contract {
 
     interface Ctrl {
@@ -8,6 +10,7 @@ public interface Contract {
 
     interface View {
         void updateUI();
+        Context getContext();
     }
 
 }

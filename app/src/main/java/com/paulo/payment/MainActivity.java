@@ -1,5 +1,6 @@
 package com.paulo.payment;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.paulo.payment.mvp.Contract;
 import com.paulo.payment.mvp.Presenter;
+import com.paulo.payment.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +55,58 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
 
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        presenter.updateUI(vs_1, true);
+    }
+
+    @Override
+    public void updateUI() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                presenter.updateUI(vs_1, false);
+
+            }
+        });
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+
+    private void controllerDots() {
+        final ImageView dot_one = findViewById(R.id.dot_one);
+        final ImageView dot_two = findViewById(R.id.dot_two);
+
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if (dx == 0) {
+                    dot_one.setImageResource(R.drawable.circle_dots_close);
+                    dot_two.setImageResource(R.drawable.circle_dots);
+                } else if (dx > 3) {
+                    dot_one.setImageResource(R.drawable.circle_dots_close);
+                    dot_two.setImageResource(R.drawable.circle_dots);
+                } else {
+                    dot_two.setImageResource(R.drawable.circle_dots_close);
+                    dot_one.setImageResource(R.drawable.circle_dots);
+                }
+            }
+        });
+    }
+
     //BIND THE IDS TEXT VIEW NAD SET CUSTOM FONT NAD CLICK KEYBOARD
     void initIds() {
 
         vs_1 = findViewById(R.id.lb_unid_1);
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/din_condensed_bold.ttf");
+        Typeface font = Utils.getFontCondesendBold(this);
         vs_1.setTypeface(font);
         TextView total = findViewById(R.id.lb_total);
         TextView lb_prefix = findViewById(R.id.lb_prefix);
@@ -99,43 +148,6 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
 
 
         presenter.clickKeyboard(numbs);
-    }
-
-
-    @Override
-    public void updateUI() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                presenter.updateUI(vs_1);
-
-            }
-        });
-    }
-
-
-    private void controllerDots() {
-        final ImageView dot_one = findViewById(R.id.dot_one);
-        final ImageView dot_two = findViewById(R.id.dot_two);
-
-
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                Log.d("LOG", " dx" + dx);
-                if (dx == 0) {
-                    dot_one.setImageResource(R.drawable.circle_dots_close);
-                    dot_two.setImageResource(R.drawable.circle_dots);
-                } else if (dx > 3) {
-                    dot_one.setImageResource(R.drawable.circle_dots_close);
-                    dot_two.setImageResource(R.drawable.circle_dots);
-                } else {
-                    dot_two.setImageResource(R.drawable.circle_dots_close);
-                    dot_one.setImageResource(R.drawable.circle_dots);
-                }
-            }
-        });
     }
 
 

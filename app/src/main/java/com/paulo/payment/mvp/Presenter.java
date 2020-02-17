@@ -2,12 +2,15 @@ package com.paulo.payment.mvp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.paulo.payment.PaymentActivity;
 import com.paulo.payment.R;
 import com.paulo.payment.entity.Payment;
+import com.paulo.payment.util.MyKeys;
+import com.paulo.payment.util.Utils;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -29,9 +32,13 @@ public class Presenter implements Contract.Ctrl {
 
     @Override
     public void click(String type) {
+        if( total.isEmpty() ) {
+            Utils.alertWarning("Valor inválido", presenter.getContext()).show();
+            return;
+        }
         Intent it = new Intent(context, PaymentActivity.class);
-        it.putExtra("Payment_type", type);
-        it.putExtra("Payment_value", total);
+        it.putExtra(MyKeys.PAY_TYPE, type);
+        it.putExtra(MyKeys.PAY_VALUE, total);
         context.startActivity(it);
 
     }
@@ -44,10 +51,19 @@ public class Presenter implements Contract.Ctrl {
     public void checkEnter() {
         if (!values.isEmpty())
             values.remove(values.size() - 1);
+        else
+            total = "";
     }
 
-    public void updateUI(TextView vs_1) {
+    public void updateUI(TextView vs_1, boolean isBack) {
         String str = "";
+
+        if( isBack ) {
+            vs_1.setText("00:00");
+            total = "";
+            return;
+        }
+
         boolean flag = true;
 
         if (values.isEmpty()) vs_1.setText("00,00");
