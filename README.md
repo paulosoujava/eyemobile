@@ -4,6 +4,9 @@ FIZ O MESMO TESTE EM FLUTTER
 PARA VER EM FLUTTER CLICK AQUI:
 https://github.com/paulosoujava/eyeMobileInFlutter
 
+Vídeo do ANDROID x FLUTTER
+https://www.linkedin.com/posts/paulo-oliveira-92127b1a0_o-mesmo-teste-em-android-e-flutter-somente-activity-6635289998654480384-H6Fa
+
 [![N|Linkdin](https://news.comschool.com.br/wp-content/uploads/2017/12/icone-linkedin-300x127.jpg)](https://www.linkedin.com/in/paulo-oliveira-92127b1a0/)
 
 [![Android](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/paulosoujava/eyemobile/tree/master/app)
