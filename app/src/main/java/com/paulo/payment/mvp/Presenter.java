@@ -32,7 +32,7 @@ public class Presenter implements Contract.Ctrl {
 
     @Override
     public void click(String type) {
-        if( total.isEmpty() ) {
+        if (total.isEmpty()) {
             Utils.alertWarning("Valor inválido", presenter.getContext()).show();
             return;
         }
@@ -59,7 +59,7 @@ public class Presenter implements Contract.Ctrl {
 
         String str = "";
 
-        if( isBack ) {
+        if (isBack) {
             vs_1.setText("00,00");
             values.clear();
             total = "";
@@ -99,48 +99,13 @@ public class Presenter implements Contract.Ctrl {
 
     public void clickKeyboard(List<View> numbs) {
         for (View v : numbs) {
-
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (v.getId() == R.id.lb_enter)
+                        checkEnter();
 
-                    switch (v.getId()) {
-                        case R.id.lb_one:
-
-                            addValue("1");
-                            break;
-                        case R.id.lb_two:
-                            addValue("2");
-                            break;
-                        case R.id.lb_three:
-                            addValue("3");
-                            break;
-                        case R.id.lb_four:
-                            addValue("4");
-                            break;
-                        case R.id.lb_five:
-                            addValue("5");
-                            break;
-                        case R.id.lb_six:
-                            addValue("6");
-                            break;
-                        case R.id.lb_seven:
-                            addValue("7");
-                            break;
-                        case R.id.lb_nine:
-                            addValue("9");
-                            break;
-                        case R.id.lb_eight:
-                            addValue("8");
-                            break;
-                        case R.id.lb_zero:
-                            addValue("0");
-                            break;
-                        case R.id.lb_enter:
-                            checkEnter();
-
-                            break;
-                    }
+                    addValue((String) v.getTag());
 
                     presenter.updateUI();
                 }
